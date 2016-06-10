@@ -34,6 +34,15 @@ FCM.subscribeToTopic = (topic) => {
 FCM.unsubscribeFromTopic = (topic) => {
     FIRMessaging.unsubscribeFromTopic(topic);
 }
+FCM.UploadFileToFirebase = () => {
+    FIRMessaging.UploadFileToFirebase(...arguments);
+}
+
+FCM.getDimentionOfImage =() => {
+  FIRMessaging.getDimentionOfImage(...arguments);
+
+};
+
 
 FCM.initialData = FIRMessaging.initialData;
 FCM.initialAction = FIRMessaging.initialAction;
