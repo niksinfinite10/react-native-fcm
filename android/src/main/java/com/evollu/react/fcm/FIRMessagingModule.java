@@ -107,6 +107,15 @@ public class FIRMessagingModule extends ReactContextBaseJavaModule implements Li
         FirebaseMessaging.getInstance().unsubscribeFromTopic(topic);
     }
     
+      private Bitmap getBitmapFromUri(Uri fileUri) throws IOException {
+        ParcelFileDescriptor parcelFileDescriptor =
+                this.getReactApplicationContext().getContentResolver().openFileDescriptor(fileUri, "r");
+        FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+        Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+        parcelFileDescriptor.close();
+        return image;
+    }
+    
      @ReactMethod
     public void getDimentionOfImage(String localFile,Promise promise) throws IOException {
         Uri fileUri = Uri.parse(localFile);
